@@ -1,0 +1,30 @@
+{
+  "name": "security-game",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "next build",
+    "export": "next export",
+    "dev": "next",
+    "start": "next start -p 80",
+    "deploy": "next build && next start -p 80",
+    "dev-deploy": "next build && next start",
+    "build-export": "npm run build && npm run export"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@zeit/next-source-maps": "0.0.3",
+    "next": "^9.5.3",
+    "next-compose-plugins": "^2.2.0",
+    "next-offline": "^5.0.2",
+    "next-optimized-images": "^2.6.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2"
+  },
+  "devDependencies": {
+    "@zeit/next-css": "^1.0.1"
+  }
+}

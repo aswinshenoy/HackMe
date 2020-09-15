@@ -17,6 +17,7 @@ const LoginCard = styled.div`
   padding: 1.5rem;
   width: 100vw;
   max-width: 800px;
+  min-width: 75vw;
   .col-md-6 {
     min-height: 65vh;
   }
@@ -71,8 +72,8 @@ export default ({ onComplete }) => {
     return <LoginPageWrap>
         <LoginCard>
             <div className="row h-100 mx-0">
-                <div className="col-md-6 px-1">
-
+                <div className="col-md-6 px-2 d-flex align-items-center">
+                    <img alt="how to play" draggable="false" src={require('../img/how.gif')} className="w-100" />
                 </div>
                 <div className="col-md-6 px-4 h-100 d-flex align-items-center justify-content-center">
                     <div style={{ width: '100%', maxWidth: '400px' }}>
@@ -102,6 +103,9 @@ export default ({ onComplete }) => {
                                 Start Game
                             </SubmitButton>
                         </form>
+                        <div className="py-2 mt-3 text-center">
+                            <a href="#" className="text-success ">Learn More ...</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -15,6 +15,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
     "@zeit/next-source-maps": "0.0.3",
     "next": "^9.5.3",
     "next-compose-plugins": "^2.2.0",

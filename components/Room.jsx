@@ -44,36 +44,52 @@ export default ({ }) => {
 
     return <div className="d-flex align-items-center justify-content-center min-vh-100 bg-dark">
         <div id="popup-wrap">
-            {showPopup && <PopUp isOpen={showPopup} onRequestClose={() => console.log('heeel')}>
-                <div className="card d-flex align-items-center justify-content-center p-3" style={{ width: '100%', minWidth: '450px', minHeight: '50vh' }}>
-                    <div className="w-100">
-                        <h3>You clicked on {device}</h3>
-                        <hr />
-                        {currQues && <div>
-                            <div className="py-2 font-weight-bold">{currQues.question}</div>
-                            {(currQues && currQues.options.length > 0) && currQues.options.map((o) =>
-                                <button
-                                    onClick={() => handleAnswer(o)}
-                                    className="btn w-100 my-1 text-left font-weight-bold btn-light p-2"
-                                >
-                                    {o.label}
-                                </button>
-                            )}
-                        </div>}
-                        <hr />
-                        <button
-                            className="btn btn-danger font-weight-bold w-100 px-2"
-                            onClick={() => setShowPopup(false)}
-                        >
-                            Close
-                        </button>
+            {showPopup && <PopUp isOpen={showPopup}>
+                <div
+                    className="card bg-warning d-flex align-items-center justify-content-center p-3"
+                    style={{ width: '100%', minWidth: '500px', minHeight: '50vh' }}
+                >
+                    <div className="row mx-0">
+                        <div className="col-md-12 px-0">
+                            <h3>You clicked on {device}</h3>
+                            <hr />
+                        </div>
+                        <div className="col-md-8 px-1">
+                            <div className="w-100">
+                                {currQues && <div>
+                                    <div className="py-2 mb-2 font-weight-bold">{currQues.question}</div>
+                                    {(currQues && currQues.options.length > 0) && currQues.options.map((o) =>
+                                        <button
+                                            onClick={() => handleAnswer(o)}
+                                            className="btn w-100 my-1 shadow-sm text-left font-weight-bold btn-light p-2"
+                                        >
+                                            {o.label}
+                                        </button>
+                                    )}
+                                </div>}
+                            </div>
+                        </div>
+                        <div className="col-md-4 d-flex align-items-center px-2">
+                            <img alt={device} style={{ width: '220px', maxWidth: '100%' }} src={require(`../img/icon/${device}.png`)} />
+                        </div>
+                        <div className="col-12 px-2">
+                            <hr />
+                            <button
+                                className="btn btn-danger font-weight-bold w-100 px-2"
+                                onClick={() => setShowPopup(false)}
+                            >
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             </PopUp>}
         </div>
         <div style={{ maxWidth: '90vw', maxHeight: '85vh', overflow: 'auto'}}>
             <svg
-                xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1920" height="1080"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                width="1920" height="1080"
                 viewBox="0 0 1920 1080"
             >
                 <defs>
@@ -91,7 +107,7 @@ export default ({ }) => {
                     <rect className="b" width="1920" height="1080.5" transform="translate(0 0)"/>
                     {!isDeviceAnswered('pc') && <use transform="translate(1683 490)" onClick={() => handleClick('pc')} xlinkHref="#d"/>}
                     {!isDeviceAnswered('id') && <use transform="translate(1747 481)" onClick={() => handleClick('id')} xlinkHref="#d"/>}
-                    {!isDeviceAnswered('id') && <use transform="translate(1031 720)" onClick={() => handleClick('smart_speaker')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('smart_speaker') && <use transform="translate(1031 720)" onClick={() => handleClick('smart_speaker')} xlinkHref="#d"/>}
                     {!isDeviceAnswered('tv') && <use transform="translate(1177 490)" onClick={() => handleClick('tv')} xlinkHref="#d"/>}
                     {!isDeviceAnswered('cctv') && <use transform="translate(943 310)"  onClick={() => handleClick('cctv')} xlinkHref="#d"/>}
                     {!isDeviceAnswered('watch') && <use transform="translate(107 633)"  onClick={() => handleClick('watch')} xlinkHref="#d"/>}

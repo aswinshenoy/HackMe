@@ -36,6 +36,10 @@ export default ({ }) => {
         setCurrQues(null);
     };
 
+    const isDeviceAnswered = (device) => {
+        return answeredDevices.some((i) => i===device);
+    }
+
     console.log(answers);
 
     return <div className="d-flex align-items-center justify-content-center min-vh-100 bg-dark">
@@ -85,15 +89,15 @@ export default ({ }) => {
                 <g id="b" className="a">
                     <rect className="c" width="1920" height="1080"/>
                     <rect className="b" width="1920" height="1080.5" transform="translate(0 0)"/>
-                    <use transform="translate(1683 490)" onClick={() => handleClick('pc')} xlinkHref="#d"/>
-                    <use transform="translate(1747 481)" onClick={() => handleClick('id')} xlinkHref="#d"/>
-                    <use transform="translate(1031 720)" onClick={() => handleClick('smart_speaker')} xlinkHref="#d"/>
-                    <use transform="translate(1177 490)" onClick={() => handleClick('tv')} xlinkHref="#d"/>
-                    <use transform="translate(943 310)"  onClick={() => handleClick('cctv')} xlinkHref="#d"/>
-                    <use transform="translate(107 633)"  onClick={() => handleClick('watch')} xlinkHref="#d"/>
-                    <use transform="translate(1073 619)" onClick={() => handleClick('router')} xlinkHref="#d"/>
-                    <use transform="translate(10 644)"   onClick={() => handleClick('phone')} xlinkHref="#d"/>
-                    <use transform="translate(1790 540)" onClick={() => handleClick('laptop')} xlinkHref="#d"/>
+                    {!isDeviceAnswered('pc') && <use transform="translate(1683 490)" onClick={() => handleClick('pc')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('id') && <use transform="translate(1747 481)" onClick={() => handleClick('id')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('id') && <use transform="translate(1031 720)" onClick={() => handleClick('smart_speaker')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('tv') && <use transform="translate(1177 490)" onClick={() => handleClick('tv')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('cctv') && <use transform="translate(943 310)"  onClick={() => handleClick('cctv')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('watch') && <use transform="translate(107 633)"  onClick={() => handleClick('watch')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('router') && <use transform="translate(1073 619)" onClick={() => handleClick('router')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('phone') && <use transform="translate(10 644)"   onClick={() => handleClick('phone')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('laptop') && <use transform="translate(1790 540)" onClick={() => handleClick('laptop')} xlinkHref="#d"/>}
                 </g>
             </svg>
         </div>

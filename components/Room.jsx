@@ -47,7 +47,7 @@ export default ({ }) => {
             {showPopup && <PopUp isOpen={showPopup}>
                 <div
                     className="card bg-warning d-flex align-items-center justify-content-center p-3"
-                    style={{ width: '100%', minWidth: '500px', minHeight: '50vh' }}
+                    style={{ width: '100%', minWidth: '500px', minHeight: '50vh', maxWidth: '100vw' }}
                 >
                     <div className="row mx-0">
                         <div className="col-md-12 px-0">
@@ -100,7 +100,7 @@ export default ({ }) => {
                     <clipPath id="c">
                         <rect width="1920" height="1080"/>
                     </clipPath>
-                    <image id="d" width="50" height="50" xlinkHref="https://i.imgur.com/j97q0aM.png"/>
+                    <image id="d" width="50" height="50" xlinkHref="https://img.icons8.com/ultraviolet/40/000000/error.png"/>
                 </defs>
                 <g id="b" className="a">
                     <rect className="c" width="1920" height="1080"/>
@@ -114,6 +114,8 @@ export default ({ }) => {
                     {!isDeviceAnswered('router') && <use transform="translate(1073 619)" onClick={() => handleClick('router')} xlinkHref="#d"/>}
                     {!isDeviceAnswered('phone') && <use transform="translate(10 644)"   onClick={() => handleClick('phone')} xlinkHref="#d"/>}
                     {!isDeviceAnswered('laptop') && <use transform="translate(1790 540)" onClick={() => handleClick('laptop')} xlinkHref="#d"/>}
+                    {!isDeviceAnswered('bulb') && <use transform="translate(367 317)" onClick={() => handleClick('bulb')} xlinkHref="#d"/>}
+
                 </g>
             </svg>
         </div>

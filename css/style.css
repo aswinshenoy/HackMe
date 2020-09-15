@@ -28,7 +28,7 @@ body {
 }
 
 .notfound {
-  max-width: 300px;
+  max-width: 520px;
   width: 100%;
   text-align: center;
 }
@@ -48,7 +48,7 @@ body {
   width: 100%;
   background: #fff;
   border-radius: 90px;
-  height: 125px;
+  height: 50px;
 }
 
 .notfound .notfound-bg > div:nth-child(1) {

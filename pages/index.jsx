@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 
 import Room from '../components/Room';
-import UserForm from '../components/UserForm';
+import LandingScreen from '../components/LandingScreen';
 import Base from '../components/Base';
+import ResultScreen from "../components/ResultScreen";
 
 const MainPage = () => {
 
     const [userInfo, setUserInfo] = useState(null);
+    const [score, setScore] = useState(null);
 
     return <Base>
-    {   userInfo ? <Room /> :
-        <UserForm onComplete={setUserInfo} />
+    {   score !== null ? <ResultScreen score={score} user={userInfo} /> :
+        userInfo ? <Room onFinish={setScore} /> :
+        <LandingScreen onStart={setUserInfo} />
     }
     </Base>
 

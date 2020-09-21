@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AudioPlayer from 'react-h5-audio-player';
 import styled from "@emotion/styled";
 import PopUp from "./PopUp";
 
@@ -54,6 +55,10 @@ export default ({ onFinish, }) => {
     const [answers, setAnswers] = useState([]);
     const [answeredDevices, setAnsweredDevices] = useState([]);
 
+    const [playMusic, setPlayMusic] = useState(true);
+
+    useEffect(() => { setPlayMusic(true); }, [playMusic]);
+
     const [isHacked, setHacked] = useState(false);
 
     const getQuestionByDevice = (device) => {
@@ -106,6 +111,13 @@ export default ({ onFinish, }) => {
     }
 
     return <RoomWrapper>
+        <AudioPlayer
+            autoPlay
+            src="/bgm.mp3"
+            volume={0.5} customProgressBarSection={[<div />]}
+            customVolumeControls={[<div />]} customAdditionalControls={[<div />]} customControlsSection={[<div />]}
+            loop
+        />
         <div id="popup-wrap">
             {showPopup && <PopUp isOpen={showPopup}>
                 {!isHacked ?
@@ -129,8 +141,8 @@ export default ({ onFinish, }) => {
                     <clipPath id="c">
                         <rect width="1920" height="1080"/>
                     </clipPath>
-                    <image id="blue_circle" width="30" height="30" xlinkHref={require('../img/icons/blue-circle.png')}/>
-                    <image id="red_circle" width="30" height="30" xlinkHref={require('../img/icons/red-circle.png')}/>
+                    <image id="blue_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/blue-circle-emoji.png"/>
+                    <image id="red_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/red-circle-emoji.png" />
                 </defs>
                 <g id="b" className="a">
                     <rect className="c" width="1920" height="1080"/>

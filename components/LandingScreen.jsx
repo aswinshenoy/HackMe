@@ -101,8 +101,9 @@ export default ({ onStart = () => {} }) => {
         <div className="bg_shade">
             <div>
                 <LandingMessageContainer>
-                    <h1>Welcome to
-                        <span>HACK ME SecCon 2020</span>
+                    <h1>
+                        <span>Welcome to HACK ME</span>
+                        <span> SecCon 2020</span>
                         <span>Cyber Awareness Game</span>
                     </h1>
                     <div>
@@ -118,7 +119,10 @@ export default ({ onStart = () => {} }) => {
                         <ul>
                             <li>Click on the Blue dots to securely setup the devices</li>
                             <li>Two devices are hidden[Easter Eggs]. Happy Hunting!</li>
-                            <li>Click on “HACK ME” button to challenge the hacker to exploit the devices.</li>
+                            <li>
+                                Click on the “HACK ME” button to challenge the hacker to exploit
+                                the devices after setting up all blue dots.
+                            </li>
                             <li>Click on the Red dots to identify your mistakes.</li>
                             <li>Learn about how the exploit was done by clicking the “Learn more” button.</li>
                         </ul>
@@ -133,7 +137,7 @@ export default ({ onStart = () => {} }) => {
                                     <input
                                         value={name} onChange={(e) => setName(e.currentTarget.value)}
                                         title="Name" placeholder="Please enter your name here" aria-label="Name of User"
-                                        className={!name.length>0 && 'extra-pad-textbox'}
+                                        className={!name.length>0 && 'extra-pad-textbox'} required
                                     />
                                 </div>
                             </div>

@@ -8,7 +8,7 @@ const customConfig = {
     // for turning of dev indicators
     devIndicators: {
         autoPrerender: false,
-    },
+    }
 };
 
 module.exports = withPlugins([

@@ -65,7 +65,7 @@ export default ({
 }) => {
 
     return <ScenarioWrapper>
-        <CloseButton onClick={onClose}><img alt="close" src={require('../img/icons/close.png')} /></CloseButton>
+        <CloseButton onClick={onClose}><img alt="close" src="https://img.icons8.com/fluent/2x/close-window.png" /></CloseButton>
         <div>
             <HeaderSection>
                 <h5>{device}</h5>

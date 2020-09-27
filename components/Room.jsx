@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import styled from "@emotion/styled";
 import PopUp from "./PopUp";
@@ -46,7 +46,7 @@ const SubmissionButton = styled.button`
       background: white;
       color: #e2231a;
    }
-`
+`;
 
 export default ({ onFinish, }) => {
 
@@ -54,12 +54,13 @@ export default ({ onFinish, }) => {
     const [currQues, setCurrQues] = useState(null);
     const [answers, setAnswers] = useState([]);
     const [answeredDevices, setAnsweredDevices] = useState([]);
-
-    const [playMusic, setPlayMusic] = useState(true);
-
-    useEffect(() => { setPlayMusic(true); }, [playMusic]);
+    const [sound, setSound] = useState('');
 
     const [isHacked, setHacked] = useState(false);
+
+    useEffect(() => {
+        setSound("./bgm.mp3");
+    }, [])
 
     const getQuestionByDevice = (device) => {
         const qs = devices.filter((i) => i.id === device);
@@ -90,10 +91,7 @@ export default ({ onFinish, }) => {
 
     const hasSecuredDevice = (device) => {
         const ans = answers.find((i) => i.id === device);
-        console.log(ans);
-        if(ans && ans['answer'] && ans['answer']['correct'])
-            return true;
-        return false;
+        return !!(ans && ans['answer'] && ans['answer']['correct']);
     }
 
     const isDeviceExploited = (device) => {
@@ -104,19 +102,16 @@ export default ({ onFinish, }) => {
 
     const calculateScore = () => {
         let score = 0;
-        answers.forEach((a) =>{
-            if(a.answer.correct) score ++;
-        })
+        answers.forEach((a) =>{ if(a.answer.correct) score ++; })
         return score;
     }
 
     return <RoomWrapper>
         <AudioPlayer
-            autoPlay
-            src="/bgm.mp3"
-            volume={0.5} customProgressBarSection={[<div />]}
-            customVolumeControls={[<div />]} customAdditionalControls={[<div />]} customControlsSection={[<div />]}
-            loop
+            src={sound} autoPlayAfterSrcChange
+            customControlsSection={[<div />]}  showJumpControls={false}
+            onEnded={() => setSound(null)} customProgressBarSection={[<div />]}
+            customVolumeControls={[<div />]} customAdditionalControls={[<div />]}
         />
         <div id="popup-wrap">
             {showPopup && <PopUp isOpen={showPopup}>
@@ -181,7 +176,11 @@ export default ({ onFinish, }) => {
             }</div>
         </InstructionText>
         {!isHacked ?
-            <SubmissionButton onClick={() => setHacked(true)}>Hack Me</SubmissionButton> :
+            <SubmissionButton
+                onClick={() => { setSound(''); setHacked(true) }}
+            >
+                Hack Me
+            </SubmissionButton> :
             <SubmissionButton onClick={() => onFinish(calculateScore())}>End Game</SubmissionButton>
         }
     </RoomWrapper>;

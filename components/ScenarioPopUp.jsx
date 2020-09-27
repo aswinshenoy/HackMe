@@ -86,7 +86,6 @@ export default ({
                 <div className="col-md-4 d-flex align-items-center px-2">
                     <img draggable="false" alt={device} style={{ width: '220px', maxWidth: '100%' }} src={image} />
                 </div>
-
             </div>
         </div>
     </ScenarioWrapper>

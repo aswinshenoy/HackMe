@@ -150,6 +150,7 @@ export default ({ user, score }) => {
                                     </div>
                                     <div className="col-md-4 px-2">
                                         <div>
+                                            <img draggable="false" alt="Prapanch Ramamoorthy" src={require('../img/team/prapanch.jpg')} />
                                             <h4>Prapanch Ramamoorthy</h4>
                                             <a href="mailto:praprama@cisco.com">praprama@cisco.com</a>
                                         </div>

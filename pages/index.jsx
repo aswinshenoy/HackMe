@@ -11,7 +11,7 @@ const MainPage = () => {
     const [score, setScore] = useState(null);
 
     return <Base>
-    {   score !== null ? <ResultScreen score={score} user={userInfo} /> :
+    {   score !== null ? <ResultScreen score={score} user={userInfo} onReset={() => { setUserInfo(null); setScore(null); }} /> :
         userInfo ? <Room onFinish={setScore} /> :
         <LandingScreen onStart={setUserInfo} />
     }

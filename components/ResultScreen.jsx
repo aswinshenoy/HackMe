@@ -41,17 +41,12 @@ const ScoreWrap = styled.div`
     padding: 0.25rem 0;
 `;
 
-const LearnMoreButton = styled.a`
-    color: white!important;
-    background: #0d274d;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none!important;
-    border-radius: 5px;
-`;
-
 const CreditButton = styled.button`
     border: none!important;
     background: none!important;
+    font-weight: 600;
+    text-decoration: none!important;
+    color: #0d274d!important;
     &:focus, &:hover {
         outline: none;
     }
@@ -99,24 +94,43 @@ const CreditsCard = styled.div`
      }
 `;
 
-const CloseButton = styled.button`
-     border: none!important;
-     outline: none!important;
-     background: transparent!important;
-     position: absolute;
-     top: 10px;
-     right: 10px;
-     img {
-        width: 32px!important;
-     }
+const SurveyButton = styled.a`
+    text-decoration: none!important;
+    background: #1e4471!important;
+    color: white!important;
+    padding: 0.75rem;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1;
+    border-radius: 0.35rem;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    height: 100%;
 `;
 
-export default ({ user, score }) => {
+const CloseButton = styled.button`
+    border: none!important;
+    outline: none!important;
+    background: transparent!important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    img {
+    width: 32px!important;
+    }
+`;
+
+export default ({ user, score, onReset = () => {} }) => {
 
     const [showCredits, setShowCredits] = useState(false);
 
     return  <ResultScreenWrap bg={require('../img/background.jpg')}>
         <div className="bg_shade">
+            <CloseButton onClick={onReset}>
+                <img alt="close" src="https://img.icons8.com/fluent/2x/reset.png" />
+            </CloseButton>
             <div style={{ maxWidth: '800px'}}>
                 <ResultMessageContainer>
                     <h1>
@@ -127,9 +141,9 @@ export default ({ user, score }) => {
                     <div className="py-2 text-center">
                         <img draggable="false" src={require('../img/you_button.png')} alt="You are our best defence" />
                     </div>
-                    <div className="d-flex justify-content-center my-2 text-center">
+                    <div className="d-flex justify-content-center mt-2 text-center">
                         <div>
-                            <h4>Great Job {user.name}</h4>
+                            <h4>{score > 8 ? 'Great Job' : score > 5 ?  'Good Job' : score > 3 ? 'Nice Work' : 'That\'s okay '} {user.name}!</h4>
                             <div>Here’s your HACK ME defense score:</div>
                             <ScoreWrap>{score}/10</ScoreWrap>
                         </div>
@@ -169,13 +183,21 @@ export default ({ user, score }) => {
                         <div className="col-md-4 d-flex align-items-center p-1">
                             <CreditButton onClick={() => setShowCredits(true)}>Credits</CreditButton>
                         </div>
-                        <div className="col-md-4 d-flex align-items-center justify-content-center p-1">
-                            <LearnMoreButton
+                        <div className="col-md-4 d-flex text-center line-height-1 align-items-center justify-content-center p-1">
+                            <CreditButton as="a"
                                 target="_blank"
                                 href="https://www.vice.com/en_us/article/d3devm/motherboard-guide-to-not-getting-hacked-online-safety-guide"
                             >
-                                Lean More
-                            </LearnMoreButton>
+                                Learn More
+                            </CreditButton>
+                        </div>
+                        <div className="col-md-4 d-flex align-items-center justify-content-end p-1">
+                            <SurveyButton
+                                href="https://www.cisco.vovici.com/se/2C85931E639774C8"
+                                target="_blank"
+                            >
+                                Quit Game
+                            </SurveyButton>
                         </div>
                     </div>
                 </ResultMessageContainer>

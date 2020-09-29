@@ -47,8 +47,8 @@ const CountDownBar = ({ total, timestamp, onEnd = () => {} }) => {
         <div className="mt-1" style={{ fontSize: '14px', color: '#DDD' }}>
             <div>
                 { left  && <div className="d-inline-block px-1">{
-                    left > 60 ? `${Math.round(left/60)} min ${Math.round(left%60)} sec left` :
-                    left >= 0 ? `${Math.round(left)} sec left` : "few seconds left"
+                    left > 60 ? `${Math.floor(left/60)} min ${Math.round(left%60)} sec left` :
+                    left >= 0 ? `${Math.round(left)} sec left` : null
                 }</div>}
             </div>
         </div>

@@ -102,7 +102,7 @@ export default ({ onStart = () => {} }) => {
             <div>
                 <LandingMessageContainer>
                     <h1>
-                        <span>Welcome to HACK ME</span>
+                        <div>Welcome to HACK ME</div>
                         <span> SecCon 2020</span>
                         <span>Cyber Awareness Game</span>
                     </h1>

@@ -182,9 +182,9 @@ export default ({ onFinish, }) => {
             }</div>
         </InstructionText>
         {!isHacked ?
-            <SubmissionButton onClick={handleOnHack}>
+            answeredDevices.length > 5 ? <SubmissionButton onClick={handleOnHack}>
                 Hack Me
-            </SubmissionButton> :
+            </SubmissionButton> : null :
             <SubmissionButton onClick={() => onFinish(calculateScore())}>End Game</SubmissionButton>
         }
     </RoomWrapper>;

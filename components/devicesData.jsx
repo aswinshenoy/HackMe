@@ -5,7 +5,7 @@ const devices = [
         "id": 1,
         "device": "Router",
         "image": require('../img/devices/router.png'),
-        "scenario": "Hi user this is your home router and all your smart devices are connected to this router for access to the internet, so go on and set a password for this device. Don't forget the password ok!",
+        "scenario": "Hi user go ahead and set up your Home Router, all your smart devices are connected to this router for access to the internet, so go on and set a password for this device. Don't forget the password OK! ",
         "options": [
             { "id": 1, "label": "password" },
             { "id": 2, "label": "StroNgPassWord" },
@@ -36,7 +36,7 @@ const devices = [
         "id": 2,
         "device": "Laptop",
         "image": require('../img/devices/laptop.png'),
-        "scenario": "Great news! Your neighbor forgot to set a password for his router now you have a super speed Wi-Fi connection.🤩 Let's go-ahead connect to it and do: ",
+        "scenario": "Great news! Your neighbor forgot to set a password for his router now you have a super speed Wi-Fi connection.🤩 Let's go-ahead connect to it and: ",
         "options": [
             { "id": 1, "label": "Download all those web series and check your social media feeds." },
             { "id": 2, "label": "Nah, never mind it, I have my own Wi-Fi. ", correct: true },
@@ -45,10 +45,9 @@ const devices = [
         ],
         "exploit": <div>
             <p>
-                Your laptop was compromised the moment you connected to an unknown or public WIFI. The hacker used
-                the tool WiFi Pineapple to spoof/MITM the wifi network.MITM attacks are a way of eavesdropping on a
+                Your laptop was compromised the moment you connected to an unknown or public WiFi. The hacker used
+                the tool WiFi Pineapple to spoof/MITM the WiFi network. MITM attacks are a way of eavesdropping on a
                 user by inserting a Pineapple between the user’s device and legitimate Wi-Fi access points.
-                Read more about the attack in “Learn more”
             </p>
         </div>,
         "tips": <div>
@@ -72,11 +71,12 @@ const devices = [
         "id": 3,
         "device": "Smartphone",
         "image": require('../img/devices/phone.png'),
-        "scenario": "Just saw this amazing app on a blog that lets you watch all those Netflix content for free, that too with NO ADS and lifetime access. What are you waiting for!🤩 Go- ahead and.. ",
+        "scenario": "You just saw this amazing app on a blog that lets you watch all those Netflix content for free, that too with NO ADS and lifetime access. What are you waiting for!🤩 Go-ahead and:",
         "options": [
             { "id": 1, "label": "Install it and start downloading your favorite shows" },
             { "id": 2, "label": "Install it and share it with your friends so they can also watch it for free." },
             { "id": 3, "label": "Get a paid membership and install Netflix from the store.", correct: true },
+            { "id": 4, "label": "Install the app, but don't sign in using your Google ID." }
         ],
         "exploit": <div>
             <p>
@@ -157,7 +157,7 @@ const devices = [
             <p>
                 "Through this exploitation, a threat actor can infiltrate a home or office's computer network
                 over-the-air, spreading ransomware or spyware, by using nothing but a laptop and an antenna from
-                over 100 meters,"
+                over 100 meters"
             </p>
         </div>,
         "tips": <div>
@@ -180,7 +180,7 @@ const devices = [
         "image": require('../img/devices/health_tracker.png'),
         "scenario": "You got a smart fitness tracker as a gift for your birthday, you are not a fitness freak or anything but love the design and usability. Let's go ahead and: ",
         "options": [
-            { "id": 1, "label": "Pair it with your phone and keep using it.", correct: true},
+            { "id": 1, "label": "Always keep it paired with your phone while using.", correct: true},
             { "id": 2, "label": "I don't need all those features, not going to spend extra time on setting it up. "},
             { "id": 3, "label": "Enable all features and let your friends play with it. "},
             { "id": 4, "label": "Turn On all features but not pair it." }

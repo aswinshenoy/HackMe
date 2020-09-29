@@ -12,7 +12,6 @@
     "dev-deploy": "next build && next start",
     "build-export": "npm run build && npm run export"
   },
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.35",

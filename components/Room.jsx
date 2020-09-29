@@ -108,7 +108,7 @@ export default ({ onFinish, }) => {
 
     return <RoomWrapper>
         <AudioPlayer
-            src={sound} autoPlayAfterSrcChange
+            src={sound} autoPlayAfterSrcChange loop
             customControlsSection={[<div />]}  showJumpControls={false}
             onEnded={() => setSound(null)} customProgressBarSection={[<div />]}
             customVolumeControls={[<div />]} customAdditionalControls={[<div />]}
@@ -144,9 +144,9 @@ export default ({ onFinish, }) => {
                     <rect className="b" width="1920" height="1080.5" transform="translate(0 0)"/>
                     {!isHacked ? <React.Fragment>
                         {!isDeviceAnswered(7) && <use transform="translate(1683 490)" onClick={() => handleClick(7)} xlinkHref="#blue_circle"/>}
-                        {!isDeviceAnswered(4) && <use transform="translate(1747 481)" onClick={() => handleClick(4)} xlinkHref="#blue_circle"/>}
+                        {!isDeviceAnswered(4) && <rect onClick={() => handleClick(4)} id="hidden_1" data-name="hidden_1" width="47" height="70" transform="matrix(1, -0.017, 0.017, 1, 1725.99, 479.878)" fill="#fff" opacity="0.02"/>}
                         {!isDeviceAnswered(8) && <use transform="translate(1031 720)" onClick={() => handleClick(8)} xlinkHref="#blue_circle"/>}
-                        {!isDeviceAnswered(9) && <use transform="translate(1177 490)" onClick={() => handleClick(9)} xlinkHref="#blue_circle"/>}
+                        {!isDeviceAnswered(9) && <rect id="hidden_2" data-name="hidden_2" width="187" height="139" transform="matrix(1, -0.017, 0.017, 1, 1032.799, 401.389)" fill="#fff" opacity="0.02" onClick={() => handleClick(9)} />}
                         {!isDeviceAnswered(10) && <use transform="translate(943 310)"  onClick={() => handleClick(10)} xlinkHref="#blue_circle"/>}
                         {!isDeviceAnswered(6) && <use transform="translate(107 633)"  onClick={() => handleClick(6)} xlinkHref="#blue_circle"/>}
                         {!isDeviceAnswered(1) && <use transform="translate(1073 619)" onClick={() => handleClick(1)} xlinkHref="#blue_circle"/>}

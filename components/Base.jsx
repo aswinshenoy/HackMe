@@ -4,9 +4,9 @@ import Head from "next/head";
 import '../styles/style.css';
 
 const seoTags = {
-    "siteName": "CISCO Hack",
-    "tagLine": "Tagline for hack",
-    "description": "Add some desc here"
+    "siteName": "HACK ME SecCon 2020 Cyber Awareness Game",
+    "tagLine": "A cyber awareness game for SecCon 2020",
+    "description": "HACK ME is a simple game of choices. The security of your home and office are in your hands, every small mistake has a big impact. This game helps you learn about the various attack vectors hackers use to exploit your day to day use devices and how you can protect against these attacks proactively."
 };
 
 const Base = ({ children, meta }) => {

@@ -6,6 +6,7 @@ import PopUp from "./PopUp";
 import ScenarioPopUp from "./ScenarioPopUp";
 import devices from "./devicesData";
 import ExploitPopUp from "./ExploitPopUp";
+import CountDownBar from "./CountDownBar";
 
 const RoomWrapper = styled.div`
   background: black;
@@ -55,7 +56,7 @@ export default ({ onFinish, }) => {
     const [answers, setAnswers] = useState([]);
     const [answeredDevices, setAnsweredDevices] = useState([]);
     const [sound, setSound] = useState('');
-
+    const [startTime, setStartTime] = useState(new Date());
     const [isHacked, setHacked] = useState(false);
 
     useEffect(() => {
@@ -104,7 +105,11 @@ export default ({ onFinish, }) => {
         let score = 0;
         answers.forEach((a) =>{ if(a.answer.correct) score ++; })
         return score;
-    }
+    };
+
+    const getExpiryTime = () => new Date(startTime.getTime() + 5*60000);
+
+    const handleOnHack = () => { setSound(''); setHacked(true) };
 
     return <RoomWrapper>
         <AudioPlayer
@@ -121,6 +126,7 @@ export default ({ onFinish, }) => {
                 }
             </PopUp>}
         </div>
+        {!isHacked && <CountDownBar timestamp={getExpiryTime()} total={60*5} onEnd={handleOnHack} />}
         <div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -170,15 +176,13 @@ export default ({ onFinish, }) => {
             </svg>
         </div>
         <InstructionText>
-            <div>  {!isHacked ?
+            <div>{!isHacked ?
                 'Click on the Blue dots to setup your devices, YOU are our best defense.' :
                 'Click on the Red dots to learn how the hacker exploited the devices.'
             }</div>
         </InstructionText>
         {!isHacked ?
-            <SubmissionButton
-                onClick={() => { setSound(''); setHacked(true) }}
-            >
+            <SubmissionButton onClick={handleOnHack}>
                 Hack Me
             </SubmissionButton> :
             <SubmissionButton onClick={() => onFinish(calculateScore())}>End Game</SubmissionButton>

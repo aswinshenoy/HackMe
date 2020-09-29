@@ -49,6 +49,20 @@ const SubmissionButton = styled.button`
    }
 `;
 
+const BlueButton = () => {
+
+    const [size, setSize] = useState(25);
+
+    useEffect(() => {
+        setTimeout(() =>  {
+            setSize(size < 30 ? size + 1 : 25);
+        }, 200);
+    })
+
+    return  <image id="blue_circle" width={size} height={size} xlinkHref="https://img.icons8.com/emoji/2x/blue-circle-emoji.png"/>
+
+}
+
 export default ({ onFinish, }) => {
 
     const [showPopup, setShowPopup] = useState(false);
@@ -109,7 +123,8 @@ export default ({ onFinish, }) => {
 
     const getExpiryTime = () => new Date(startTime.getTime() + 5*60000);
 
-    const handleOnHack = () => { setSound(''); setHacked(true) };
+    const handleOnHack = () => { setHacked(true) };
+
 
     return <RoomWrapper>
         <AudioPlayer
@@ -142,7 +157,7 @@ export default ({ onFinish, }) => {
                     <clipPath id="c">
                         <rect width="1920" height="1080"/>
                     </clipPath>
-                    <image id="blue_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/blue-circle-emoji.png"/>
+                    <BlueButton />
                     <image id="red_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/red-circle-emoji.png" />
                 </defs>
                 <g id="b" className="a">

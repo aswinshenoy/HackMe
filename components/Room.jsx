@@ -95,10 +95,8 @@ export default ({ onFinish, }) => {
     const handleAnswer = (option) => {
         setAnsweredDevices([...answeredDevices, currQues.id]);
         const ans = [...answers, {
-            "id": currQues.id,
-            "device": currQues.device,
-            "question": currQues,
-            "answer": option,
+            "id": currQues.id, "device": currQues.device,
+            "question": currQues, "answer": option,
         }];
         setAnswers(ans);
         setShowPopup(false);
@@ -128,7 +126,6 @@ export default ({ onFinish, }) => {
 
     const handleOnHack = () => { setHacked(true) };
 
-
     return <RoomWrapper>
         <AudioPlayer
             src={sound} autoPlayAfterSrcChange loop
@@ -144,7 +141,7 @@ export default ({ onFinish, }) => {
                 }
             </PopUp>}
         </div>
-        {!isHacked && <CountDownBar timestamp={getExpiryTime()} total={60*5} onEnd={handleOnHack} />}
+        {!isHacked && <CountDownBar questionsAnswered={answeredDevices.length} totalQuestions={10} timestamp={getExpiryTime()} total={60*5} onEnd={handleOnHack} />}
         <div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -202,9 +199,10 @@ export default ({ onFinish, }) => {
         {!isHacked ?
            <SubmissionButton disabled={answeredDevices.length < 5} onClick={handleOnHack}>
                 Hack Me
+               {answeredDevices.length < 5 &&
                <div style={{ fontSize: '9px', fontWeight: 300, maxWidth: '150px', lineHeight: '1.2' }}>
                    Answer {5-answeredDevices.length} or more to activate
-               </div>
+               </div>}
             </SubmissionButton> :
             <SubmissionButton onClick={() => onFinish(calculateScore())}>End Game</SubmissionButton>
         }

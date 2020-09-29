@@ -129,7 +129,7 @@ export default ({ user, score, onReset = () => {} }) => {
     return  <ResultScreenWrap bg={require('../img/background.jpg')}>
         <div className="bg_shade">
             <CloseButton onClick={onReset}>
-                <img alt="close" src="https://img.icons8.com/fluent/2x/reset.png" />
+                <img alt="reset" src="https://img.icons8.com/fluent/2x/reset.png" />
             </CloseButton>
             <div style={{ maxWidth: '800px'}}>
                 <ResultMessageContainer>

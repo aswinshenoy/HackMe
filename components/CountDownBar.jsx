@@ -26,7 +26,7 @@ const ProgressBarContainer = styled.div`
 
 const calculateSecondsLeft = (date) => date ? (date.getTime() - new Date().getTime())/1000 : 0;
 
-const CountDownBar = ({ total, timestamp, onEnd = () => {} }) => {
+const CountDownBar = ({ total, timestamp, onEnd = () => {}, questionsAnswered = 0, totalQuestions = 10 }) => {
     const [left, setSec] = useState(-1);
 
     useEffect(() => {
@@ -44,12 +44,17 @@ const CountDownBar = ({ total, timestamp, onEnd = () => {} }) => {
 
     return <ProgressBarContainer>
         <ProgressBarWrap total={total} left={left > 0 ? left : 0} />
-        <div className="mt-1" style={{ fontSize: '14px', color: '#DDD' }}>
-            <div>
+        <div className="mt-1 row mx-0" style={{ fontSize: '16px', color: '#DDD' }}>
+            <div className="col-6 p-1 d-flex align-items-center">
+                <img style={{ width: '24px' }} alt="time left" src="https://img.icons8.com/fluent/2x/hourglass.png" />
                 { left  && <div className="d-inline-block px-1">{
                     left > 60 ? `${Math.floor(left/60)} min ${Math.round(left%60)} sec left` :
                     left >= 0 ? `${Math.round(left)} sec left` : null
                 }</div>}
+            </div>
+            <div className="col-6 py-1 px-2 d-flex align-items-center justify-content-end">
+                <img style={{ width: '24px' }} alt="time left" src="https://img.icons8.com/fluent/2x/tick-box.png" />
+                <div className="ml-1">{questionsAnswered}/{totalQuestions} answered</div>
             </div>
         </div>
     </ProgressBarContainer>;

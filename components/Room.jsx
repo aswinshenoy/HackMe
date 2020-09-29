@@ -47,15 +47,19 @@ const SubmissionButton = styled.button`
       background: white;
       color: #e2231a;
    }
+   &:disabled {
+      background: #333;
+      color: #e2231a;
+   }
 `;
 
 const BlueButton = () => {
 
-    const [size, setSize] = useState(25);
+    const [size, setSize] = useState(27);
 
     useEffect(() => {
         setTimeout(() =>  {
-            setSize(size < 30 ? size + 1 : 25);
+            setSize(size < 30 ? size + 1 : 27);
         }, 200);
     })
 
@@ -79,8 +83,7 @@ export default ({ onFinish, }) => {
 
     const getQuestionByDevice = (device) => {
         const qs = devices.filter((i) => i.id === device);
-        if(qs.length > 0)
-            return qs[0];
+        if(qs.length > 0) return qs[0];
         return null;
     };
 
@@ -169,9 +172,9 @@ export default ({ onFinish, }) => {
                         {!isDeviceAnswered(8) && <use transform="translate(1031 720)" onClick={() => handleClick(8)} xlinkHref="#blue_circle"/>}
                         {!isDeviceAnswered(9) && <rect id="hidden_2" data-name="hidden_2" width="187" height="139" transform="matrix(1, -0.017, 0.017, 1, 1032.799, 401.389)" fill="#fff" opacity="0.02" onClick={() => handleClick(9)} />}
                         {!isDeviceAnswered(10) && <use transform="translate(943 310)"  onClick={() => handleClick(10)} xlinkHref="#blue_circle"/>}
-                        {!isDeviceAnswered(6) && <use transform="translate(107 633)"  onClick={() => handleClick(6)} xlinkHref="#blue_circle"/>}
+                        {!isDeviceAnswered(6) && <use transform="translate(100 623)"  onClick={() => handleClick(6)} xlinkHref="#blue_circle"/>}
                         {!isDeviceAnswered(1) && <use transform="translate(1073 619)" onClick={() => handleClick(1)} xlinkHref="#blue_circle"/>}
-                        {!isDeviceAnswered(3) && <use transform="translate(25 644)"   onClick={() => handleClick(3)} xlinkHref="#blue_circle"/>}
+                        {!isDeviceAnswered(3) && <use transform="translate(55 614)"   onClick={() => handleClick(3)} xlinkHref="#blue_circle"/>}
                         {!isDeviceAnswered(2) && <use transform="translate(1790 540)" onClick={() => handleClick(2)} xlinkHref="#blue_circle"/>}
                         {!isDeviceAnswered(5) && <use transform="translate(367 317)" onClick={() => handleClick(5)} xlinkHref="#blue_circle"/>}
                     </React.Fragment> :
@@ -181,9 +184,9 @@ export default ({ onFinish, }) => {
                         {isDeviceExploited(8) && <use transform="translate(1031 720)" onClick={() => handleClick(8)} xlinkHref="#red_circle"/>}
                         {isDeviceExploited(9) && <use transform="translate(1177 490)" onClick={() => handleClick(9)} xlinkHref="#red_circle"/>}
                         {isDeviceExploited(10) && <use transform="translate(943 310)"  onClick={() => handleClick(10)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(6) && <use transform="translate(107 633)"  onClick={() => handleClick(6)} xlinkHref="#red_circle"/>}
+                        {isDeviceExploited(6) && <use transform="translate(100 623)"  onClick={() => handleClick(6)} xlinkHref="#red_circle"/>}
                         {isDeviceExploited(1) && <use transform="translate(1073 619)" onClick={() => handleClick(1)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(3) && <use transform="translate(25 644)"   onClick={() => handleClick(3)} xlinkHref="#red_circle"/>}
+                        {isDeviceExploited(3) && <use transform="translate(55 614)"   onClick={() => handleClick(3)} xlinkHref="#red_circle"/>}
                         {isDeviceExploited(2) && <use transform="translate(1790 540)" onClick={() => handleClick(2)} xlinkHref="#red_circle"/>}
                         {isDeviceExploited(5) && <use transform="translate(367 317)" onClick={() => handleClick(5)} xlinkHref="#red_circle"/>}
                     </React.Fragment>}
@@ -197,9 +200,12 @@ export default ({ onFinish, }) => {
             }</div>
         </InstructionText>
         {!isHacked ?
-            answeredDevices.length > 5 ? <SubmissionButton onClick={handleOnHack}>
+           <SubmissionButton disabled={answeredDevices.length < 5} onClick={handleOnHack}>
                 Hack Me
-            </SubmissionButton> : null :
+               <div style={{ fontSize: '9px', fontWeight: 300, maxWidth: '150px', lineHeight: '1.2' }}>
+                   Answer {5-answeredDevices.length} or more to activate
+               </div>
+            </SubmissionButton> :
             <SubmissionButton onClick={() => onFinish(calculateScore())}>End Game</SubmissionButton>
         }
     </RoomWrapper>;

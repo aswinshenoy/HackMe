@@ -24,7 +24,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-h5-audio-player": "^3.4.1",
-    "react-lottie": "^1.2.3",
     "react-modal": "^3.11.2",
     "shortid": "^2.2.15"
   },

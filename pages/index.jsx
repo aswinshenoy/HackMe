@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Room from '../components/Room';
 import LandingScreen from '../components/LandingScreen';
@@ -11,7 +11,7 @@ const MainPage = () => {
     const [score, setScore] = useState(null);
 
     return <Base>
-    {   score !== null ? <ResultScreen score={score} user={userInfo} onReset={() => { setUserInfo(null); setScore(null); }} /> :
+    {score !== null ? <ResultScreen score={score} user={userInfo} onReset={() => { setUserInfo(null); setScore(null); }} /> :
         userInfo ? <Room onFinish={setScore} /> :
         <LandingScreen onStart={setUserInfo} />
     }

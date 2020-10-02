@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import AudioPlayer from 'react-h5-audio-player';
+
 import styled from "@emotion/styled";
 import PopUp from "./PopUp";
 
@@ -7,9 +8,14 @@ import ScenarioPopUp from "./ScenarioPopUp";
 import devices from "./devicesData";
 import ExploitPopUp from "./ExploitPopUp";
 import CountDownBar from "./CountDownBar";
+import {keyframes} from "@emotion/core";
 
 const RoomWrapper = styled.div`
-  background: black;
+  background-color: black;
+  background-image: ${({bg}) => bg ? `url(${bg})` : null};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,13 +59,30 @@ const SubmissionButton = styled.button`
    }
 `;
 
+const gradeMove = keyframes`
+   0% { background: linear-gradient(to right, #e2231a 0, #0d274d 0% 100%); }
+   25% { background: linear-gradient(to right, #e2231a 25%, #0d274d 25% 100%); }
+   50% { background: linear-gradient(to right, #e2231a 50%, #0d274d 50% 100%); }
+   75% { background: linear-gradient(to right, #e2231a 75%, #0d274d 75% 100%); }
+   100% { background: linear-gradient(to right, #e2231a 100%, #0d274d 100% 100%); }
+`
+
+const HackerBarWrap = styled.div`
+    height: 20px;
+    width: 100%;
+    transition: ease-in background 5s;
+    margin-bottom: 1px;
+    animation: 5s ${gradeMove};
+    background: linear-gradient(to right, #e2231a 0, #0d274d 0% 100%);
+`;
+
 const BlueButton = () => {
 
-    const [size, setSize] = useState(33);
+    const [size, setSize] = useState(34);
 
     useEffect(() => {
         setTimeout(() =>  {
-            setSize(size < 36 ? size + 1 : 33);
+            setSize(size < 36 ? size + 1 : 34);
         }, 200);
     })
 
@@ -124,9 +147,35 @@ export default ({ onFinish, }) => {
 
     const getExpiryTime = () => new Date(startTime.getTime() + 5*60000);
 
-    const handleOnHack = () => { setHacked(true) };
+    const handleOnHack = () => {
+        setCounter(1);
+        setHacked(true)
+    };
 
-    return <RoomWrapper>
+    const [counter, setCounter] = useState(null);
+
+    useEffect(() => {
+        if(counter && counter > 0) {
+            setTimeout(() => {
+                setCounter(null);
+            }, 5000);
+        }
+    })
+
+    return counter ?
+    <RoomWrapper bg={require('../img/background.jpg')} style={{ height: '100vh' }} className="text-light">
+        <div
+            className="d-flex justify-content-center text-center align-items-center"
+            style={{ width: '100%', height: '100vh', background: 'rgba(0,0,0,0.55)' }}
+        >
+            <div>
+                <img src={require('../img/hacker.png')} style={{ maxWidth: '100%', maxHeight: '400px' }} />
+                <h2 className="my-2">Hacking Your Smart Devices</h2>
+                <HackerBarWrap />
+            </div>
+        </div>
+    </RoomWrapper> :
+    <RoomWrapper>
         <AudioPlayer
             src={sound} autoPlayAfterSrcChange loop
             customControlsSection={[<div />]}  showJumpControls={false}
@@ -204,7 +253,7 @@ export default ({ onFinish, }) => {
                         }
                         {isDeviceExploited(2) ?
                             <use transform="translate(1790 540)" onClick={() => handleClick(2)} xlinkHref="#red_circle"/> :
-                            <use transform="translate(1790 540))" xlinkHref="#green_circle"/>
+                            <use transform="translate(1790 540)" xlinkHref="#green_circle"/>
                         }
                         {isDeviceExploited(3) ?
                             <use transform="translate(55 614)" onClick={() => handleClick(3)} xlinkHref="#red_circle"/> :

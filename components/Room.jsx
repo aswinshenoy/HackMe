@@ -55,11 +55,11 @@ const SubmissionButton = styled.button`
 
 const BlueButton = () => {
 
-    const [size, setSize] = useState(27);
+    const [size, setSize] = useState(33);
 
     useEffect(() => {
         setTimeout(() =>  {
-            setSize(size < 30 ? size + 1 : 27);
+            setSize(size < 36 ? size + 1 : 33);
         }, 200);
     })
 
@@ -154,10 +154,8 @@ export default ({ onFinish, }) => {
                     <pattern  id="a" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1600 901">
                         <image width="1600" height="901" xlinkHref={require('../img/background.jpg')} />
                     </pattern>
-                    <clipPath id="c">
-                        <rect width="1920" height="1080"/>
-                    </clipPath>
                     <BlueButton />
+                    <image id="green_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/green-circle-emoji.png" />
                     <image id="red_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/red-circle-emoji.png" />
                 </defs>
                 <g id="b" className="a">
@@ -176,16 +174,46 @@ export default ({ onFinish, }) => {
                         {!isDeviceAnswered(5) && <use transform="translate(367 317)" onClick={() => handleClick(5)} xlinkHref="#blue_circle"/>}
                     </React.Fragment> :
                     <React.Fragment>
-                        {isDeviceExploited(7) && <use transform="translate(1683 490)" onClick={() => handleClick(7)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(4) && <use transform="translate(1747 481)" onClick={() => handleClick(4)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(8) && <use transform="translate(1031 720)" onClick={() => handleClick(8)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(9) && <use transform="translate(1177 490)" onClick={() => handleClick(9)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(10) && <use transform="translate(943 310)"  onClick={() => handleClick(10)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(6) && <use transform="translate(100 623)"  onClick={() => handleClick(6)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(1) && <use transform="translate(1073 619)" onClick={() => handleClick(1)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(3) && <use transform="translate(55 614)"   onClick={() => handleClick(3)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(2) && <use transform="translate(1790 540)" onClick={() => handleClick(2)} xlinkHref="#red_circle"/>}
-                        {isDeviceExploited(5) && <use transform="translate(367 317)" onClick={() => handleClick(5)} xlinkHref="#red_circle"/>}
+                        {isDeviceExploited(7) ?
+                            <use transform="translate(1683 490)" onClick={() => handleClick(7)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(1683 490)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(4) ?
+                            <use transform="translate(1747 481)" onClick={() => handleClick(4)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(1747 481)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(8) ?
+                            <use transform="translate(1031 720)" onClick={() => handleClick(8)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(1031 720)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(9) ?
+                            <use transform="translate(1177 490)" onClick={() => handleClick(9)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(1177 490)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(10) ?
+                            <use transform="translate(943 310)" onClick={() => handleClick(10)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(943 310)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(6) ?
+                            <use transform="translate(100 623)"  onClick={() => handleClick(6)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(100 623)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(1) ?
+                            <use transform="translate(1073 619)" onClick={() => handleClick(1)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(1073 619)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(2) ?
+                            <use transform="translate(1790 540)" onClick={() => handleClick(2)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(1790 540))" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(3) ?
+                            <use transform="translate(55 614)" onClick={() => handleClick(3)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(55 614)" xlinkHref="#green_circle"/>
+                        }
+                        {isDeviceExploited(5) ?
+                            <use transform="translate(367 317)" onClick={() => handleClick(5)} xlinkHref="#red_circle"/> :
+                            <use transform="translate(367 317)" xlinkHref="#green_circle"/>
+                        }
                     </React.Fragment>}
                 </g>
             </svg>

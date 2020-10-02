@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from "@emotion/styled";
+
 import PopUp from "./PopUp";
 
 const ResultScreenWrap = styled.div`

@@ -83,10 +83,10 @@ const devices = [
                 You just installed a malicious app to your phone and compromised the security of the device.
                 Now the hacker has full control over your phone’s data including images, contacts , files and
                 everything else. He can initiate communication on your behalf or sabotage your office accounts
-                and duties. Read more about the attack in “Learn more”
+                and duties.
             </p>
         </div>,
-        "tips:": <div>
+        "tips": <div>
             <div>Tips to protect your mobile device from malware: </div>
             <ul>
                 <li>
@@ -161,13 +161,14 @@ const devices = [
             </p>
         </div>,
         "tips": <div>
+            <div>Tips while buying smart devices online - </div>
             <ul>
                 <li>
                     Never compromise on security when it comes to technology, read the product documentation carefully
                     and purchase smart devices with good security implementations.
                 </li>
                 <li>
-                    Keep all your Smart devices up-to -date at all times, hackers find new ways to get into
+                    Keep all your Smart devices up-to-date at all times, hackers find new ways to get into
                     your network every minute so be prepared.
                 </li>
             </ul>
@@ -194,6 +195,7 @@ const devices = [
             </p>
         </div>,
         "tips": <div>
+            <div>How to protect yourself from this exploit?</div>
             <ul>
                 <li>Using LE privacy implementation enabled devices.</li>
                 <li>Adopting HTTPS and security pinning</li>

@@ -10,7 +10,7 @@ import CountDownBar from "./CountDownBar";
 import {keyframes} from "@emotion/core";
 
 const RoomWrapper = styled.div`
-  background-color: black;
+  background-color: #0b0b0b;
   background-image: ${({bg}) => bg ? `url(${bg})` : null};
   background-repeat: no-repeat;
   background-position: center;
@@ -145,7 +145,8 @@ export default ({ onFinish, }) => {
                 setCounter(null);
             }, 5000);
         }
-    })
+    });
+
 
     return<React.Fragment>
         <AudioPlayer
@@ -161,14 +162,13 @@ export default ({ onFinish, }) => {
                 style={{ width: '100%', height: '100vh', background: 'rgba(0,0,0,0.75)' }}
             >
                 <div>
-                    <img src={require('../img/hacker.png')} style={{ maxWidth: '100%', maxHeight: '400px' }} />
+                    <img alt="Hacking" src={require('../img/hacker.png')} style={{ maxWidth: '100%', maxHeight: '400px' }} />
                     <h2 className="my-2">Hacking Your Smart Devices</h2>
                     <HackerBarWrap />
                 </div>
             </div>
         </RoomWrapper> :
         <RoomWrapper>
-
             <div id="popup-wrap">
                 {showPopup && <PopUp isOpen={showPopup}>
                     {!isHacked ?
@@ -187,7 +187,7 @@ export default ({ onFinish, }) => {
                 >
                     <defs>
                         <style dangerouslySetInnerHTML={{ __html: `.a{clip - path:url(#c);}.b{fill:url(#a);}.c{fill:#fff;}`}} />
-                        <pattern  id="a" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1600 901">
+                        <pattern id="a" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1600 901">
                             <image width="1600" height="901" xlinkHref={require('../img/background.jpg')} />
                         </pattern>
                         <image id="blue_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/blue-circle-emoji.png"/>
@@ -195,7 +195,6 @@ export default ({ onFinish, }) => {
                         <image id="red_circle" width="30" height="30" xlinkHref="https://img.icons8.com/emoji/2x/red-circle-emoji.png" />
                     </defs>
                     <g id="b" className="a">
-                        <rect className="c" width="1920" height="1080"/>
                         <rect className="b" width="1920" height="1080.5" transform="translate(0 0)"/>
                         {!isHacked ? <React.Fragment>
                                 {!isDeviceAnswered(7) && <use transform="translate(1683 490)" onClick={() => handleClick(7)} xlinkHref="#blue_circle"/>}

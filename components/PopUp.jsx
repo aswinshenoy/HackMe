@@ -3,7 +3,7 @@ import ReactModal from 'react-modal';
 
 
 export default ({
-    isOpen, onClose, children, maxWidth = '720px'
+    isOpen, onClose, children, maxWidth = '800px'
 }) => {
 
     return <ReactModal

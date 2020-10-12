@@ -150,7 +150,7 @@ export default ({ onFinish, }) => {
 
     return<React.Fragment>
         <AudioPlayer
-            src={sound} autoPlayAfterSrcChange loop
+            src={sound} autoPlayAfterSrcChange loop volume={0.5}
             customControlsSection={[<div />]}  showJumpControls={false}
             onEnded={() => setSound(null)} customProgressBarSection={[<div />]}
             customVolumeControls={[<div />]} customAdditionalControls={[<div />]}
